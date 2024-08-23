@@ -126,8 +126,10 @@ main {
 }
 
 #user_infos span:last-child {
-    color: #ffffff;
+    color: #d0e5ea;
     font-size: 12px;
+    margin-top: 8px;
+
 }
 
 #side_items {
@@ -153,7 +155,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #0a0a0a;
+    color: #211b35;
 }
 
 .side-item.active a {
@@ -172,13 +174,17 @@ main {
     position: absolute;
     top: 30px;
     right: -10px;
-    background-color: #ffffff;
-    color: #e3e9f7;
+    background-color: transparent;
+    color: transparent;
     border-radius: 100%;
-    width: 20px;
-    height: 20px;
+    width: 70px;
+    height: 70px;
     border: none;
     cursor: pointer;
+    background-image: url('../images/estreladomar.png'); /* Substitua pelo caminho correto da sua imagem */
+    background-size: cover;/* Ajusta o tamanho da imagem para cobrir o botão */
+    background-position: center; /* Centraliza a imagem no botão */
+    background-repeat: no-repeat; /* Evita que a imagem se repita */
 }
 
 #open_btn_icon {
