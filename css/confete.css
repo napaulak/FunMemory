@@ -1,0 +1,142 @@
+/* Define a altura da página e centraliza o conteúdo */
+body {
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: url('../images/background.jpg') no-repeat center center fixed; /* Adicione a imagem de fundo */
+    background-size: cover; /* Faz a imagem cobrir toda a área do fundo */
+    background-image: url('../images/bg2.jpg');
+}
+
+
+.moving-image {
+    position: absolute; /* Posicionamento absoluto em relação ao body */
+    top: 20%; /* Ajuste este valor para posicionar a imagem acima do h1 */
+    left: 50%; /* Centraliza horizontalmente */
+    transform: translate(-50%, -50%); /* Centraliza a imagem */
+    max-width: 100px; /* Define o tamanho máximo da imagem */
+    animation: float 3s ease-in-out infinite; /* Animação suave de flutuação */
+}
+
+h1 {
+    text-align: center;
+    color: #1431d6; 
+    margin: 50px 0; 
+    font-family: 'Super Ocean Personal Use', sans-serif;
+}
+
+h2 {
+    text-align: center;
+    color: #d70da5; 
+    margin: 90;
+    margin-top: 80; 
+    font-family: 'Super Ocean Personal Use';
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translate(-50%, -50%);
+    }
+    50% {
+        transform: translate(-50%, -45%); 
+    }
+}
+
+img{
+    display: block; 
+    margin: 0 auto; 
+    max-width: 200px; 
+    margin-bottom: 20px; 
+}
+
+
+/* Centraliza o texto dos cabeçalhos */
+h1{
+    text-align: center;
+    color: #1431d6; /* Altere a cor do texto conforme necessário */
+    margin: 190;
+    font-family: 'Super Ocean Personal Use', sans-serif;
+}
+
+h2{
+    text-align: center;
+    color: #d70da5; /* Altere a cor do texto conforme necessário */
+    margin: 60;
+    margin-top: 100; 
+    font-family: 'Super Ocean Personal Use';
+}
+
+/* Estilo do canvas para o efeito de confete */
+canvas#confetti {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+/* Estilo do botão */
+.button-53 {
+    background-color: #34d1e9;
+    border: 0 solid #e5e7eb;
+    box-sizing: border-box;
+    color: #2b21df;
+    display: flex;
+    font-family:'Super Ocean Personal Use';
+    font-size: 1rem;
+    font-weight: 700;
+    justify-content: center;
+    align-items: center; /* Adicionado para centralizar verticalmente o conteúdo */
+    line-height: 1.75rem;
+    padding: 1rem 2rem; /* Ajuste de padding para tamanho mais balanceado */
+    position: relative;
+    margin: 0 auto; /* Centraliza o botão horizontalmente */
+    margin-top: 20px; /* Espaçamento superior opcional */
+    text-align: center; /* Altera de 'bottom' para 'center' */
+    text-decoration: none #000000 solid;
+    text-decoration-thickness: auto;
+    width: 100%;
+    max-width: 200px; /* Ajuste o tamanho máximo conforme necessário */
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    border-radius: 50px; /* Faz o botão ficar com bordas arredondadas */
+}
+
+.button-53:focus {
+    outline: 0;
+}
+
+.button-53:after {
+    content: "";
+    position: absolute;
+    bottom: 4px;
+    left: 4px;
+    width: calc(100% - 1px);
+    height: calc(100% - 1px);
+}
+
+.button-53:hover:after {
+    bottom: 2px;
+    left: 2px;
+}
+
+@media (min-width: 768px) {
+    .button-53 {
+        padding: 1rem 3rem;
+        font-size: 1.25rem;
+    }
+}
+
+@font-face {
+    font-family: 'Super Ocean Personal Use';
+    src: url('../fonts/Super\ Ocean\ Personal\ Use.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
