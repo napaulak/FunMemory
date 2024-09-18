@@ -15,6 +15,19 @@ const bichos =[
     'tartaruga',
 ];
 
+const sons = [
+   'bird.mp3',
+   'cat.mp3',
+   'dog.mp3',
+   'dolphin.mp3',
+   'elephant.mp3',
+   'fish.mp3',
+   'frog.mp3',
+   'lion.mp3',
+   'rabbit.mp3',
+   'turtle.mp3',
+];
+
 
 const createElement = (tag, className) => {
 
@@ -102,7 +115,7 @@ const loadGame = () => {
     const duplicateBichos = [ ... bichos, ... bichos]
 
     const shuffledArray = duplicateBichos.sort( ()=> Math.random() - 0.5);
-
+              
     Math.random()
     
     shuffledArray.forEach((bicho) => {
