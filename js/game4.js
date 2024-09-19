@@ -15,6 +15,18 @@ const bichos =[
     'pitaya',
 ];
 
+const sons = [
+    'apple.mp3',
+    'banana.mp3',
+    'cherry.mp3',
+    'dragonfruit.mp3',
+    'grape.mp3',
+    'lemon.mp3',
+    'orange.mp3',
+    'pineapple.mp3',
+    'strawberry.mp3',
+    'watermelon.mp3',
+ ];
 
 const createElement = (tag, className) => {
 

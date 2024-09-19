@@ -15,6 +15,19 @@ const bichos =[
     'urso',
 ];
 
+const sons = [
+    'ball.mp3',
+    'bicycle.mp3',
+    'cart.mp3',
+    'doll.mp3',
+    'kite.mp3',
+    'pluzze.mp3',
+    'shuttlecock.mp3',
+    'skateboard.mp3',
+    'teddybear.mp3',
+    'trampolin.mp3',
+ ];
+
 
 const createElement = (tag, className) => {
 

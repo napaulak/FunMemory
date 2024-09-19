@@ -15,6 +15,19 @@ const bichos =[
     'fome',
 ];
 
+const sons = [
+    'anger.mp3',
+    'animation.mp3',
+    'boredom.mp3',
+    'disgust.mp3',
+    'fear.mp3',
+    'hapiness.mp3',
+    'hunger.mp3',
+    'love.mp3',
+    'sadness.mp3',
+    'shame.mp3',
+ ];
+
 
 const createElement = (tag, className) => {
 

@@ -15,6 +15,18 @@ const bichos =[
     'orelha',
 ];
 
+const sons = [
+    'arm.mp3',
+    'ear.mp3',
+    'eyes.mp3',
+    'feet.mp3',
+    'hair.mp3',
+    'hand.mp3',
+    'head.mp3',
+    'legs.mp3',
+    'mouth.mp3',
+    'nose.mp3',
+ ];
 
 const createElement = (tag, className) => {
 

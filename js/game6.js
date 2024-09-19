@@ -15,6 +15,19 @@ const bichos =[
     'liqui',
 ];
 
+const sons = [
+    'bed.mp3',
+    'alarmclock.mp3',
+    'blender.mp3',
+    'ceinlingfan.mp3',
+    'closet.mp3',
+    'computer.mp3',
+    'cushion.mp3',
+    'stove.mp3',
+    'table.mp3',
+    'television.mp3',
+ ];
+
 
 const createElement = (tag, className) => {
 

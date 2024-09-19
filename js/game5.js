@@ -15,6 +15,18 @@ const bichos =[
     'lapis',
 ];
 
+const sons = [
+    'backpack.mp3',
+    'colouredpencil.mp3',
+    'eraser.mp3',
+    'file.mp3',
+    'highlighter.mp3',
+    'notebook.mp3',
+    'pen.mp3',
+    'scissorsc.mp3',
+    'sharpener.mp3',
+    'stapler.mp3',
+ ];
 
 const createElement = (tag, className) => {
 

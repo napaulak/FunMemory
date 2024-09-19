@@ -15,6 +15,18 @@ const bichos =[
     'pintor',
 ];
 
+const sons = [
+    'artist.mp3',
+    'detective.mp3',
+    'doctor.mp3',
+    'engineer.mp3',
+    'fireman.mp3',
+    'pilot.mp3',
+    'policeofficer.mp3',
+    'scientist.mp3',
+    'singer.mp3',
+    'veterinarian.mp3',
+ ];
 
 const createElement = (tag, className) => {
 

@@ -15,6 +15,19 @@ const bichos =[
     'foguete',
 ];
 
+const sons = [
+    'airplane.mp3',
+    'boat.mp3',
+    'bus.mp3',
+    'car.mp3',
+    'motorcycle.mp3',
+    'rocket.mp3',
+    'ship.mp3',
+    'subway.mp3',
+    'train.mp3',
+    'truck.mp3',
+ ];
+
 
 const createElement = (tag, className) => {
 

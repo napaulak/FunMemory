@@ -15,6 +15,19 @@ const bichos =[
     'achocolate',
 ];
 
+const sons = [
+    'barbecue.mp3',
+    'beans.mp3',
+    'cake.mp3',
+    'chocolatemilk.mp3',
+    'coffee.mp3',
+    'hamburguer.mp3',
+    'icecream.mp3',
+    'juice.mp3',
+    'milk.mp3',
+    'rice.mp3',
+ ];
+
 
 const createElement = (tag, className) => {
 
