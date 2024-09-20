@@ -42,10 +42,37 @@ let secondCard = '';
 const checkEndGame = () => {
     const disabledCards = document.querySelectorAll('.disabled-card');
 
-    if (disabledCards.length == 20){
-        clearInterval(this.loop)
-        alert(`Parabéns, ${spanPlayer.innerHTML}! Seu tempo foi de: ${timer.innerHTML}. Jogue mais uma vez!`);
+    if (disabledCards.length == 20) {
+        clearInterval(this.loop);
 
+        // Configurações da animação de confete com tamanho maior
+        confetti({
+            particleCount: 100,
+            spread: 70,
+            origin: { y: 0.6 },
+            scalar: 1.5 // Aumenta o tamanho dos confetes (valor padrão é 1)
+        });
+
+        // Exibe uma mensagem personalizada
+        const playerName = spanPlayer.innerHTML;
+        const playerTime = timer.innerHTML;
+
+        const message = document.createElement('div');
+        message.innerHTML = `<h1>Parabéns, ${playerName}!</h1><p>Seu tempo foi de: ${playerTime}. Jogue mais uma vez!</p>`;
+        message.style.position = 'fixed';
+        message.style.top = '50%';
+        message.style.left = '50%';
+        message.style.transform = 'translate(-50%, -50%)';
+        message.style.backgroundColor = 'white';
+        message.style.padding = '20px';
+        message.style.borderRadius = '10px';
+        message.style.boxShadow = '0 0 10px rgba(0,0,0,0.3)';
+        document.body.appendChild(message);
+
+        // Remove a mensagem após alguns segundos
+        setTimeout(() => {
+            document.body.removeChild(message);
+        }, 5000);
     }
 }
 
