@@ -1,12 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <body>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tela Final!</title>
     <link rel="stylesheet" href="../css/confete.css">
+    <body>
+    <style>
+       #back-button {
+    border: none; /* Remover borda */
+    background: none; /* Remover fundo */
+    color: #4c38bd; /* Cor do texto */
+    display: flex;
+    font-family: 'Super Ocean Personal Use';
+    font-size: 1.20rem;
+    font-weight: 700;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.75rem;
+    padding: 0; /* Remover padding */
+    position: fixed; /* Fixado na tela */
+    top: 20px; /* Distância do topo */
+    left: 20px; /* Distância da direita */
+    text-align: center; 
+    text-decoration: underline; /* Adiciona sublinhado no texto, se desejar */
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    text-decoration: none;
+}
+
+#back-button:hover {
+    color: #1b6d48;  /* Cor ao passar o mouse */
+}
+    </style>
 </head>
-<body>
     
     <img src="../images/cm.png" id="moving-image" alt="Imagem Animada" class="moving-image">
     <h1>Parabéns! Você terminou o jogo e nadou <br>no mar do conhecimento!</h1>
@@ -14,6 +44,8 @@
 
     <button id="button" class="button-53" role="button">YEAH!</button>
     <canvas id="confetti"></canvas>
+
+    <button id="back-button" onclick="location.href='../index.html'">Jogar Novamente</button>
 
     <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
     <script src="../js/confete.js"></script>
