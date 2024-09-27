@@ -15,18 +15,18 @@ const bichos =[
     'foguete',
 ];
 
-const sons = [
-    'airplane.mp3',
-    'boat.mp3',
-    'bus.mp3',
-    'car.mp3',
-    'motorcycle.mp3',
-    'rocket.mp3',
-    'ship.mp3',
-    'subway.mp3',
-    'train.mp3',
-    'truck.mp3',
- ];
+const sons = {
+   'aviao': 'airplane.mp3',
+   'canoa': 'boat.mp3',
+   'onibus': 'bus.mp3',
+   'carro2': 'car.mp3',
+   'moto': 'motorcycle.mp3',
+   'foguete': 'rocket.mp3',
+   'barco': 'ship.mp3',
+   'bala': 'subway.mp3',
+   'trem': 'train.mp3',
+   'caminhao': 'truck.mp3',
+ };
 
 
 const createElement = (tag, className) => {
@@ -39,6 +39,11 @@ const createElement = (tag, className) => {
 
 let firstCard = '';
 let secondCard = '';
+
+const playSound = (bicho) => {
+    const audio = new Audio(`../audios/transportes/${sons[bicho]}`);
+    audio.play();
+}
 
 const checkEndGame = () => {
     const disabledCards = document.querySelectorAll('.disabled-card');
@@ -89,10 +94,13 @@ const revealCard = ({target}) =>{
    if(firstCard == ''){
     target.parentNode.classList.add('reveal-card')
     firstCard = target.parentNode
+    const bicho = firstCard.getAttribute('data-bicho');
+    playSound(bicho);
 }else if(secondCard == ''){
     target.parentNode.classList.add('reveal-card')
     secondCard = target.parentNode
-
+    const bicho = secondCard.getAttribute('data-bicho');
+    playSound(bicho);
     checkCards();
 }
     

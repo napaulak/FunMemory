@@ -15,18 +15,18 @@ const bichos =[
     'orelha',
 ];
 
-const sons = [
-    'arm.mp3',
-    'ear.mp3',
-    'eyes.mp3',
-    'feet.mp3',
-    'hair.mp3',
-    'hand.mp3',
-    'head.mp3',
-    'legs.mp3',
-    'mouth.mp3',
-    'nose.mp3',
- ];
+const sons = {
+   'braco': 'arm.mp3',
+   'orelha': 'ear.mp3',
+   'olho': 'eyes.mp3',
+   'pe': 'feet.mp3',
+   'cabelo': 'hair.mp3',
+   'mao': 'hand.mp3',
+   'cabeca': 'head.mp3',
+   'perna': 'legs.mp3',
+   'boca': 'mouth.mp3',
+   'nariz': 'nose.mp3',
+ };
 
 const createElement = (tag, className) => {
 
@@ -38,6 +38,11 @@ const createElement = (tag, className) => {
 
 let firstCard = '';
 let secondCard = '';
+
+const playSound = (bicho) => {
+    const audio = new Audio(`../audios/pdc/${sons[bicho]}`);
+    audio.play();
+}
 
 const checkEndGame = () => {
     const disabledCards = document.querySelectorAll('.disabled-card');
@@ -88,10 +93,13 @@ const revealCard = ({target}) =>{
    if(firstCard == ''){
     target.parentNode.classList.add('reveal-card')
     firstCard = target.parentNode
+    const bicho = firstCard.getAttribute('data-bicho');
+    playSound(bicho);
 }else if(secondCard == ''){
     target.parentNode.classList.add('reveal-card')
     secondCard = target.parentNode
-
+    const bicho = secondCard.getAttribute('data-bicho');
+    playSound(bicho);
     checkCards();
 }
     
