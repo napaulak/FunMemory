@@ -15,18 +15,18 @@ const bichos =[
     'tartaruga',
 ];
 
-const sons = [
-   'bird.mp3',
-   'cat.mp3',
-   'dog.mp3',
-   'dolphin.mp3',
-   'elephant.mp3',
-   'fish.mp3',
-   'frog.mp3',
-   'lion.mp3',
-   'rabbit.mp3',
-   'turtle.mp3',
-];
+const sons = {
+    'passaro': 'bird.mp3',
+    'gato': 'cat.mp3',
+    'cachorro': 'dog.mp3',
+    'golfinho': 'dolphin.mp3',
+    'elefante': 'elephant.mp3',
+    'peixe': 'fish.mp3',
+    'sapo': 'frog.mp3',
+    'leao': 'lion.mp3',
+    'coelho': 'rabbit.mp3',
+    'tartaruga': 'turtle.mp3'
+ };
 
 
 const createElement = (tag, className) => {
@@ -39,6 +39,11 @@ const createElement = (tag, className) => {
 
 let firstCard = '';
 let secondCard = '';
+
+const playSound = (bicho) => {
+    const audio = new Audio(`../audios/animais/${sons[bicho]}`);
+    audio.play();
+}
 
     const checkEndGame = () => {
         const disabledCards = document.querySelectorAll('.disabled-card');
@@ -80,22 +85,26 @@ if(firstBicho == secondBicho){
 }
 }
 
-const revealCard = ({target}) =>{
-
-    if(target.parentNode.className.includes('reveal-card')){
+const revealCard = ({ target }) => {
+    if (target.parentNode.className.includes('reveal-card')) {
         return;
     }
-        
-   if(firstCard == ''){
-    target.parentNode.classList.add('reveal-card')
-    firstCard = target.parentNode
-}else if(secondCard == ''){
-    target.parentNode.classList.add('reveal-card')
-    secondCard = target.parentNode
 
-    checkCards();
-}
-    
+    if (firstCard == '') {
+        target.parentNode.classList.add('reveal-card')
+        firstCard = target.parentNode
+
+        const bicho = firstCard.getAttribute('data-bicho');
+        playSound(bicho);  // Toca o som quando a primeira carta é virada
+    } else if (secondCard == '') {
+        target.parentNode.classList.add('reveal-card')
+        secondCard = target.parentNode
+
+        const bicho = secondCard.getAttribute('data-bicho');
+        playSound(bicho);  // Toca o som quando a segunda carta é virada
+
+        checkCards();
+    }
 }
 
 const createCard = (bicho) => {
