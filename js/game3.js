@@ -6,17 +6,17 @@ const bichos =[
     'suco',
     'cafe',
     'arroz',
-    'leite',
+    'agua',
     'sorvete',
     'bolo',
     'lanche',
-    'churras',
+    'donuts',
     'feijao',
     'achocolate',
 ];
 
 const sons = {
-   'churrasco': 'barbecue.mp3',
+   'donuts': 'donuts.mp3',
     'feijao': 'beans.mp3',
     'bolo': 'cake.mp3',
     'achocolate': 'chocolatemilk.mp3',
@@ -24,7 +24,7 @@ const sons = {
     'lanche': 'hamburguer.mp3',
     'sorvete': 'icecream.mp3',
     'suco': 'juice.mp3',
-    'leite': 'milk.mp3',
+    'agua': 'water.mp3',
     'arroz': 'rice.mp3',
 };
 

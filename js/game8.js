@@ -12,11 +12,11 @@ const bichos =[
     'cantor',
     'piloto',
     'ciencia',
-    'pintor',
+    'atriz',
 ];
 
 const sons = {
-   'pintor': 'artist.mp3',
+   'atriz': 'actress.mp3',
    'detetive': 'detective.mp3',
    'medica': 'doctor.mp3',
    'enge': 'engineer.mp3',

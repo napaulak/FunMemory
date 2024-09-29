@@ -19,7 +19,7 @@ const sons = {
    'cama': 'bed.mp3',
    'despertador': 'alarmclock.mp3',
    'liqui': 'blender.mp3',
-   'ventilador': 'ceinlingfan.mp3',
+   'ventilador': 'ceilingfan.mp3',
    'closet': 'closet.mp3',
    'computador': 'computer.mp3',
    'puff': 'cushion.mp3',

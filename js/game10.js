@@ -11,17 +11,17 @@ const bichos =[
     'bala',
     'carro2',
     'caminhao',
-    'canoa',
-    'foguete',
+    'bicicleta',
+    'heli',
 ];
 
 const sons = {
    'aviao': 'airplane.mp3',
-   'canoa': 'boat.mp3',
+   'bicicleta': 'bicycle2.mp3',
    'onibus': 'bus.mp3',
    'carro2': 'car.mp3',
    'moto': 'motorcycle.mp3',
-   'foguete': 'rocket.mp3',
+   'heli': 'helicopter.mp3',
    'barco': 'ship.mp3',
    'bala': 'subway.mp3',
    'trem': 'train.mp3',

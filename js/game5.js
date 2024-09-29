@@ -3,26 +3,26 @@ const spanPlayer = document.querySelector('.player')
 const timer = document.querySelector('.timer')
 
 const bichos =[
-    'caneta',
-    'caderno',
+    'cola',
+    'regua',
     'borracha',
-    'marcatexto',
+    'globo',
     'grampo',
     'tesoura',
     'pasta',
-    'bolsa',
+    'estojo',
     'apontador',
-    'lapis',
+    'livro',
 ];
 
 const sons = {
-   'bolsa': 'backpack.mp3',
-   'lapis': 'colouredpencil.mp3',
+   'globo': 'globe.mp3',
+   'livro': 'book.mp3',
    'borracha': 'eraser.mp3',
-   'pasta': 'file.mp3',
-   'marcatexto': 'highlighter.mp3',
-   'caderno': 'notebook.mp3',
-   'caneta': 'pen.mp3',
+   'pasta': 'folder.mp3',
+   'cola': 'glue.mp3',
+   'estojo': 'pencilcase.mp3',
+   'regua': 'ruler.mp3',
    'tesoura': 'scissorsc.mp3',
    'apontador': 'sharpener.mp3',
    'grampo': 'stapler.mp3',
