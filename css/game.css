@@ -18,8 +18,8 @@ header {
     font-size: 1.2em;
     width: 100%;
     max-width: 800px;
-    padding: 30px;
-    margin: 0 0 30px;
+    padding: 20px;
+    margin: 0 0 20px;
     border-radius: 5px;
 }
 
@@ -27,7 +27,7 @@ header {
     
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 15px;
+    gap: 10px;
     width: 100%;
     max-width: 800px;
     margin: 0 auto;
@@ -79,14 +79,20 @@ background-color: #ccc
 body {
     display: flex;
     min-height: 100vh;
-    background-color: #2cb2ca;
+    background-color: #00dce8;
+    overflow: hidden; /* Evita a barra de rolagem no body */
 }
 
 main {
     padding: 20px;
-    overflow: auto;
+    width: 100%;
+    min-height: 100vh; /* Garante que main ocupe a altura total da viewport */
     z-index: 1;
     padding-left: calc(82px + 20px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 #sidebar {
@@ -103,14 +109,14 @@ main {
 }
 
 #sidebar_content {
-    padding: 12px;
+    padding:12px;
 }
 
 #user {
     display: flex;
     align-items: center;
     gap: 8px;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
 }
 
 #user_avatar {
@@ -123,6 +129,7 @@ main {
 #user_infos {
     display: flex;
     flex-direction: column;
+    font-size: 15px;
 }
 
 #user_infos span:last-child {
@@ -155,11 +162,14 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #211b35;
+    color: #000000;
+}
+.side-item.active {
+    background-color:#0f4596 ;
 }
 
 .side-item.active a {
-    color: #e3e9f7;
+    color: #e3e9f7; 
 }
 
 .side-item a i {
@@ -174,14 +184,13 @@ main {
     position: absolute;
     top: 30px;
     right: -10px;
-    background-color: transparent;
-    color: transparent;
+    background-color: #4f46e5;
+    color: #e3e9f7; 
     border-radius: 100%;
-    width: 70px;
-    height: 70px;
+    width: 30px;
+    height: 30px;
     border: none;
     cursor: pointer;
-    background-image: url('../images/estreladomar.png'); 
     background-size: cover;
     background-position: center; 
     background-repeat: no-repeat; 
