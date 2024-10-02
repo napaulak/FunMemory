@@ -52,7 +52,7 @@ const playSound = (bicho) => {
             clearInterval(this.loop);
 
             alert(`Parabéns, ${spanPlayer.innerHTML}! Seu tempo foi de: ${timer.innerHTML}. Jogue mais uma vez!`);
-        
+            
 
         }
     }
