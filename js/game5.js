@@ -23,7 +23,7 @@ const sons = {
    'cola': 'glue.mp3',
    'estojo': 'pencilcase.mp3',
    'regua': 'ruler.mp3',
-   'tesoura': 'scissorsc.mp3',
+   'tesoura': 'scissors.mp3',
    'apontador': 'sharpener.mp3',
    'grampo': 'stapler.mp3',
  };
