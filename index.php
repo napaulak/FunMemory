@@ -11,7 +11,7 @@
     <title>Tela Inicial</title>
     </head>
 <body>
-<form class="login-form" method="get" action="index.php">
+<form class="login-form" method="get" action="./php/game.php">
 
 <div class="login_header">
     <img src="./images/logo-removebg-preview.png" alt="brain icon">
@@ -25,8 +25,6 @@
 
 </form>
 
-
-      
 
 <?php
 if (isset($_GET['login__input'])){
