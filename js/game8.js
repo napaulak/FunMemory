@@ -47,11 +47,14 @@ const playSound = (bicho) => {
 const checkEndGame = () => {
     const disabledCards = document.querySelectorAll('.disabled-card');
 
-    if (disabledCards.length == 20) {
+    if (disabledCards.length == 2) {
         clearInterval(this.loop);
 
-        alert(`Parabéns, ${spanPlayer.innerHTML}! Seu tempo foi de: ${timer.innerHTML}. Jogue mais uma vez!`);
-        
+        const playerName = spanPlayer.innerHTML;
+        const timeTaken = timer.innerHTML;
+
+        document.getElementById('popupMessage').innerText = `${playerName} Seu tempo foi de: ${timeTaken}. Jogue mais uma vez!`;
+        document.getElementById('popup').style.display = 'flex';
 
     }
 }
@@ -147,4 +150,14 @@ window.onload = () => {
    spanPlayer.innerHTML = localStorage.getItem('player')
    startTimer()
     loadGame();
+}
+
+document.getElementById('closePopup').onclick = function() {
+    document.getElementById('popup').style.display = 'none';
+}
+
+window.onclick = function(event) {
+    if (event.target === document.getElementById('popup')) {
+        document.getElementById('popup').style.display = 'none';
+    }
 }

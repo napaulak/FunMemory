@@ -17,7 +17,7 @@ function handleSubmit (event){
     event.preventDefault()
 
     localStorage.setItem('player', input.value);
-    window.location = 'pages/game.html'
+    window.location = 'php/game.php'
 
 }
 

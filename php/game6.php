@@ -17,6 +17,13 @@
         include_once("navbar.html");
     ?>
     <main>
+    <div id="popup" class="popup">
+    <div class="popup-content">
+        <span id="closePopup" class="close">&times;</span>
+        <h3>Parabéns!</h3><br>
+        <p id="popupMessage"></p>
+    </div>
+    </div>
         <header>
             <span class="player"></span>
             <span>Time: <span class="timer">00</span></span>
