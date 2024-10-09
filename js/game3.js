@@ -1,6 +1,7 @@
 const grid = document.querySelector('.grid')
 const spanPlayer = document.querySelector('.player')
 const timer = document.querySelector('.timer')
+const itemNav = document.querySelector(".comida");
 
 const bichos =[
     'suco',
@@ -56,6 +57,10 @@ const checkEndGame = () => {
 
         document.getElementById('popupMessage').innerText = `${playerName} Seu tempo foi de: ${timeTaken}. Jogue mais uma vez!`;
         document.getElementById('popup').style.display = 'flex';
+
+        itemNav.classList.add("disabled");
+
+        localStorage.setItem("game-comidas", "won");
 
         }
 }
@@ -148,11 +153,48 @@ const startTimer = () => {
 }
 
 window.onload = () => {
-    
-   spanPlayer.innerHTML = localStorage.getItem('player')
-   startTimer()
+    spanPlayer.innerHTML = localStorage.getItem("player");
+
+    const winnedAnimals = [
+        localStorage.getItem("game-animais"),
+        localStorage.getItem("game-brinquedo"),
+        localStorage.getItem("game-comida"),
+        localStorage.getItem("game-fruta"),
+        localStorage.getItem("game-escola"),
+        localStorage.getItem("game-objeto"),
+        localStorage.getItem("game-corpo"),
+        localStorage.getItem("game-profissao"),
+        localStorage.getItem("game-sensacao"),
+        localStorage.getItem("game-transporte"),
+    ];
+
+    // Desabilitar todos os itens que foram ganhos
+    winnedAnimals.forEach((status, index) => {
+        if (status === 'won') {
+            // Aqui, você pode usar um seletor para desabilitar o item correspondente
+            const itemClasses = [
+                'animal',      // index 0
+                'brinquedo',   // index 1
+                'comida',      // index 2
+                'fruta',       // index 3
+                'escola',      // index 4
+                'objeto',      // index 5
+                'corpo',       // index 6
+                'profissao',   // index 7
+                'sensacao',    // index 8
+                'transporte'   // index 9
+            ];
+            const item = document.querySelector(`.${itemClasses[index]}`);
+            if (item) {
+                item.classList.add("disabled");
+            }
+        }
+    });
+
+    startTimer();
     loadGame();
-}
+};
+
 
 document.getElementById('closePopup').onclick = function() {
     document.getElementById('popup').style.display = 'none';

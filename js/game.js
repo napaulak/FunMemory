@@ -1,164 +1,198 @@
-const grid = document.querySelector('.grid')
-const spanPlayer = document.querySelector('.player')
-const timer = document.querySelector('.timer')
+const grid = document.querySelector(".grid");
+const spanPlayer = document.querySelector(".player");
+const timer = document.querySelector(".timer");
+const itemNav = document.querySelector(".animal");
 
-const bichos =[
-    'cachorro',
-    'coelho',
-    'elefante',
-    'gato',
-    'golfinho',
-    'leao',
-    'passaro',
-    'peixe',
-    'sapo',
-    'tartaruga',
+const bichos = [
+  "cachorro",
+  "coelho",
+  "elefante",
+  "gato",
+  "golfinho",
+  "leao",
+  "passaro",
+  "peixe",
+  "sapo",
+  "tartaruga",
 ];
 
 const sons = {
-    'passaro': 'bird.mp3',
-    'gato': 'cat.mp3',
-    'cachorro': 'dog.mp3',
-    'golfinho': 'dolphin.mp3',
-    'elefante': 'elephant.mp3',
-    'peixe': 'fish.mp3',
-    'sapo': 'frog.mp3',
-    'leao': 'lion.mp3',
-    'coelho': 'rabbit.mp3',
-    'tartaruga': 'turtle.mp3'
- };
-
+  passaro: "bird.mp3",
+  gato: "cat.mp3",
+  cachorro: "dog.mp3",
+  golfinho: "dolphin.mp3",
+  elefante: "elephant.mp3",
+  peixe: "fish.mp3",
+  sapo: "frog.mp3",
+  leao: "lion.mp3",
+  coelho: "rabbit.mp3",
+  tartaruga: "turtle.mp3",
+};
 
 const createElement = (tag, className) => {
+  const element = document.createElement(tag);
+  element.className = className;
+  return element;
+};
 
-    const element = document.createElement(tag)
-    element.className = className
-    return element
-}
-
-
-let firstCard = '';
-let secondCard = '';
+let firstCard = "";
+let secondCard = "";
 
 const playSound = (bicho) => {
-    const audio = new Audio(`../audios/animais/${sons[bicho]}`);
-    audio.play();
-}
+  const audio = new Audio(`../audios/animais/${sons[bicho]}`);
+  audio.play();
+};
 
 const checkEndGame = () => {
-    const disabledCards = document.querySelectorAll('.disabled-card');
+  const disabledCards = document.querySelectorAll(".disabled-card");
 
-    if (disabledCards.length == 20) {
-        clearInterval(this.loop);
+  if (disabledCards.length == 20) {
+    clearInterval(this.loop);
 
-        const playerName = spanPlayer.innerHTML;
-        const timeTaken = timer.innerHTML;
+    const playerName = spanPlayer.innerHTML;
+    const timeTaken = timer.innerHTML;
 
-        document.getElementById('popupMessage').innerText = `${playerName} Seu tempo foi de: ${timeTaken}. Jogue mais uma vez!`;
-        document.getElementById('popup').style.display = 'flex';
-    }
-}
-   
-    const checkCards = () => {
-   const firstBicho = firstCard.getAttribute('data-bicho')
-   const secondBicho = secondCard.getAttribute('data-bicho')
+    document.getElementById(
+      "popupMessage"
+    ).innerText = `${playerName} Seu tempo foi de: ${timeTaken}. Jogue mais uma vez!`;
+    document.getElementById("popup").style.display = "flex";
 
-if(firstBicho == secondBicho){
+    itemNav.classList.add("disabled");
 
-     firstCard.firstChild.classList.add('disabled-card')
-     secondCard.firstChild.classList.add('disabled-card')
+    localStorage.setItem("game-animais", "won");
+  }
+};
 
-        firstCard = ''
-        secondCard = ''
+const checkCards = () => {
+  const firstBicho = firstCard.getAttribute("data-bicho");
+  const secondBicho = secondCard.getAttribute("data-bicho");
 
-        checkEndGame();
+  if (firstBicho == secondBicho) {
+    firstCard.firstChild.classList.add("disabled-card");
+    secondCard.firstChild.classList.add("disabled-card");
 
-}else{
-    
-    setTimeout( ()=> {
+    firstCard = "";
+    secondCard = "";
 
-        firstCard.classList.remove('reveal-card');
-        secondCard.classList.remove('reveal-card');
+    checkEndGame();
+  } else {
+    setTimeout(() => {
+      firstCard.classList.remove("reveal-card");
+      secondCard.classList.remove("reveal-card");
 
-        firstCard = ''
-        secondCard = ''
-    }, 500)
-       
-}
-}
+      firstCard = "";
+      secondCard = "";
+    }, 500);
+  }
+};
 
 const revealCard = ({ target }) => {
-    if (target.parentNode.className.includes('reveal-card')) {
-        return;
-    }
+  if (target.parentNode.className.includes("reveal-card")) {
+    return;
+  }
 
-    if (firstCard == '') {
-        target.parentNode.classList.add('reveal-card')
-        firstCard = target.parentNode
+  if (firstCard == "") {
+    target.parentNode.classList.add("reveal-card");
+    firstCard = target.parentNode;
 
-        const bicho = firstCard.getAttribute('data-bicho');
-        playSound(bicho);  // Toca o som quando a primeira carta é virada
-    } else if (secondCard == '') {
-        target.parentNode.classList.add('reveal-card')
-        secondCard = target.parentNode
+    const bicho = firstCard.getAttribute("data-bicho");
+    playSound(bicho); // Toca o som quando a primeira carta é virada
+  } else if (secondCard == "") {
+    target.parentNode.classList.add("reveal-card");
+    secondCard = target.parentNode;
 
-        const bicho = secondCard.getAttribute('data-bicho');
-        playSound(bicho);  // Toca o som quando a segunda carta é virada
+    const bicho = secondCard.getAttribute("data-bicho");
+    playSound(bicho); // Toca o som quando a segunda carta é virada
 
-        checkCards();
-    }
-}
+    checkCards();
+  }
+};
 
 const createCard = (bicho) => {
-    const card = createElement('div', 'card')
-    const front = createElement('div', 'face front')
-    const back = createElement('div', 'face back')
+  const card = createElement("div", "card");
+  const front = createElement("div", "face front");
+  const back = createElement("div", "face back");
 
-    front.style.backgroundImage = `url('../images/${bicho}.png')`;
-    
-    card.appendChild(front);
-    card.appendChild(back);
-    
-    card.addEventListener('click', revealCard);
-    card.setAttribute('data-bicho', bicho)
-return card
-}
+  front.style.backgroundImage = `url('../images/${bicho}.png')`;
+
+  card.appendChild(front);
+  card.appendChild(back);
+
+  card.addEventListener("click", revealCard);
+  card.setAttribute("data-bicho", bicho);
+  return card;
+};
 
 const loadGame = () => {
-    const duplicateBichos = [ ... bichos, ... bichos]
+  const duplicateBichos = [...bichos, ...bichos];
 
-    const shuffledArray = duplicateBichos.sort( ()=> Math.random() - 0.5);
-              
-    Math.random()
-    
-    shuffledArray.forEach((bicho) => {
-     const card = createCard(bicho);
-      grid.appendChild(card);
-    });
-}
+  const shuffledArray = duplicateBichos.sort(() => Math.random() - 0.5);
+
+  Math.random();
+
+  shuffledArray.forEach((bicho) => {
+    const card = createCard(bicho);
+    grid.appendChild(card);
+  });
+};
 
 const startTimer = () => {
-
-     this.loop =  setInterval(() => {
-
-      const currentTime = +timer.innerHTML
-      timer.innerHTML = currentTime + 1 
-    }, 1000)
-}
+  this.loop = setInterval(() => {
+    const currentTime = +timer.innerHTML;
+    timer.innerHTML = currentTime + 1;
+  }, 1000);
+};
 
 window.onload = () => {
-    
-   spanPlayer.innerHTML = localStorage.getItem('player')
-   startTimer()
+    spanPlayer.innerHTML = localStorage.getItem("player");
+
+    const winnedAnimals = [
+        localStorage.getItem("game-animais"),
+        localStorage.getItem("game-brinquedo"),
+        localStorage.getItem("game-comida"),
+        localStorage.getItem("game-fruta"),
+        localStorage.getItem("game-escola"),
+        localStorage.getItem("game-objeto"),
+        localStorage.getItem("game-corpo"),
+        localStorage.getItem("game-profissao"),
+        localStorage.getItem("game-sensacao"),
+        localStorage.getItem("game-transporte"),
+    ];
+
+    // Desabilitar todos os itens que foram ganhos
+    winnedAnimals.forEach((status, index) => {
+        if (status === 'won') {
+            // Aqui, você pode usar um seletor para desabilitar o item correspondente
+            const itemClasses = [
+                'animal',      // index 0
+                'brinquedo',   // index 1
+                'comida',      // index 2
+                'fruta',       // index 3
+                'escola',      // index 4
+                'objeto',      // index 5
+                'corpo',       // index 6
+                'profissao',   // index 7
+                'sensacao',    // index 8
+                'transporte'   // index 9
+            ];
+            const item = document.querySelector(`.${itemClasses[index]}`);
+            if (item) {
+                item.classList.add("disabled");
+            }
+        }
+    });
+
+    startTimer();
     loadGame();
-}
+};
 
-document.getElementById('closePopup').onclick = function() {
-    document.getElementById('popup').style.display = 'none';
-}
 
-window.onclick = function(event) {
-    if (event.target === document.getElementById('popup')) {
-        document.getElementById('popup').style.display = 'none';
-    }
-}
+document.getElementById("closePopup").onclick = function () {
+  document.getElementById("popup").style.display = "none";
+};
+
+window.onclick = function (event) {
+  if (event.target === document.getElementById("popup")) {
+    document.getElementById("popup").style.display = "none";
+  }
+};

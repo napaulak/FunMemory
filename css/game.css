@@ -261,3 +261,8 @@ main {
     font-size: 20px;
 }
 
+.disabled {
+    color: gray;
+    pointer-events: none;
+    opacity: 0.5;
+}
