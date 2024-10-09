@@ -59,7 +59,7 @@ const checkEndGame = () => {
 
         itemNav.classList.add("disabled");
 
-        localStorage.setItem("game-frutas", "won");
+        localStorage.setItem("game-fruta", "won");
 
         }
 }

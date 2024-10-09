@@ -60,7 +60,7 @@ const checkEndGame = () => {
 
         itemNav.classList.add("disabled");
 
-        localStorage.setItem("game-comidas", "won");
+        localStorage.setItem("game-comida", "won");
 
         }
 }
@@ -168,28 +168,36 @@ window.onload = () => {
         localStorage.getItem("game-transporte"),
     ];
 
+    console.log(winnedAnimals);
+
     // Desabilitar todos os itens que foram ganhos
     winnedAnimals.forEach((status, index) => {
+        console.log(`Status: ${status}, Index: ${index}`);
         if (status === 'won') {
-            // Aqui, você pode usar um seletor para desabilitar o item correspondente
             const itemClasses = [
-                'animal',      // index 0
-                'brinquedo',   // index 1
-                'comida',      // index 2
-                'fruta',       // index 3
-                'escola',      // index 4
-                'objeto',      // index 5
-                'corpo',       // index 6
-                'profissao',   // index 7
-                'sensacao',    // index 8
-                'transporte'   // index 9
+                'animal',
+                'brinquedo',
+                'comida',
+                'fruta',
+                'escola',
+                'objeto',
+                'corpo',
+                'profissao',
+                'sensacao',
+                'transporte'
             ];
             const item = document.querySelector(`.${itemClasses[index]}`);
+            console.log(`Item encontrado: ${item}`); // Verifica se o item foi encontrado
             if (item) {
                 item.classList.add("disabled");
+                console.log(`Item ${itemClasses[index]} desabilitado`); // Confirma desabilitação
+            } else {
+                console.log(`Item ${itemClasses[index]} não encontrado`); // Verifica se o item não foi encontrado
             }
         }
     });
+    
+    console.log(localStorage);
 
     startTimer();
     loadGame();
