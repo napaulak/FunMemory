@@ -45,17 +45,19 @@ const playSound = (bicho) => {
     audio.play();
 }
 
-    const checkEndGame = () => {
-        const disabledCards = document.querySelectorAll('.disabled-card');
+const checkEndGame = () => {
+    const disabledCards = document.querySelectorAll('.disabled-card');
 
-        if (disabledCards.length == 20) {
-            clearInterval(this.loop);
+    if (disabledCards.length === 20) {
+        clearInterval(this.loop);
 
-            alert(`Parabéns, ${spanPlayer.innerHTML}! Seu tempo foi de: ${timer.innerHTML}. Jogue mais uma vez!`);
-            
+        const playerName = spanPlayer.innerHTML;
+        const timeTaken = timer.innerHTML;
 
-        }
+        document.getElementById('popupMessage').innerText = `${playerName} Seu tempo foi de: ${timeTaken}. Jogue mais uma vez!`;
+        document.getElementById('popup').style.display = 'flex';
     }
+}
    
     const checkCards = () => {
    const firstBicho = firstCard.getAttribute('data-bicho')
@@ -151,3 +153,12 @@ window.onload = () => {
     loadGame();
 }
 
+document.getElementById('closePopup').onclick = function() {
+    document.getElementById('popup').style.display = 'none';
+}
+
+window.onclick = function(event) {
+    if (event.target === document.getElementById('popup')) {
+        document.getElementById('popup').style.display = 'none';
+    }
+}
