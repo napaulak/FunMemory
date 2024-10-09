@@ -48,7 +48,7 @@ const playSound = (bicho) => {
 const checkEndGame = () => {
     const disabledCards = document.querySelectorAll('.disabled-card');
 
-    if (disabledCards.length == 2) {
+    if (disabledCards.length == 20) {
         clearInterval(this.loop);
         
         const playerName = spanPlayer.innerHTML;
