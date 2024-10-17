@@ -1,3 +1,12 @@
+<?php
+//Repetir em todas as páginas
+    if(isset($_COOKIE['player'])){
+        $nome = $_COOKIE['player'];
+    }else{
+        header("location:../index.php");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

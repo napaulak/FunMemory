@@ -11,7 +11,7 @@
     <title>Tela Inicial</title>
     </head>
 <body>
-<form class="login-form" method="get" action="./php/game.php">
+<form class="login-form" method="get" action="index.php">
 
 <div class="login_header">
     <img src="./images/logo-removebg-preview.png" alt="brain icon">
@@ -34,6 +34,7 @@ if (isset($_GET['login__input'])){
     // echo $sql;
     if(mysqli_query($conexao,$sql)){
         setcookie('player',$nome);
+        setcookie('tempo',0);
         header("location: php/game.php");
     }else{
         echo "Erro";

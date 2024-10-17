@@ -1,3 +1,12 @@
+<?php
+//Repetir em todas as páginas
+    if(isset($_COOKIE['player'])){
+        $nome = $_COOKIE['player'];
+    }else{
+        header("location:../index.php");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,10 +33,14 @@
         <p id="popupMessage"></p>
     </div>
     </div>
-        <header>
+    <header>
             <span class="player"></span>
-            <span>Time: <span class="timer">00</span></span>
+            <span>
+                Player: <span class="user"><?php echo $nome;?></span>
+                Time: <span class="timer">00</span>
+            </span>
         </header>
+
          <div class="grid"></div>
     </main>
    

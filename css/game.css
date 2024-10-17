@@ -112,7 +112,7 @@ main {
     padding:12px;
 }
 
-#user {
+#player {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -266,3 +266,4 @@ main {
     pointer-events: none;
     opacity: 0.5;
 }
+
