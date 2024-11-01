@@ -28,6 +28,25 @@ const sons = {
   urso: "teddybear.mp3",
   pulapula: "trampolin.mp3",
 };
+// ---------------------------------------------
+const checkAllGamesCompleted = () => {
+  const gameNames = [
+      "game-animais",
+      "game-brinquedo",
+      "game-comida",
+      "game-fruta",
+      "game-escola",
+      "game-objeto",
+      "game-corpo",
+      "game-profissao",
+      "game-sensacao",
+      "game-transporte",
+  ];
+
+  return gameNames.every(game => localStorage.getItem(`game-${game}`) === 'won');
+};
+
+// -------------------------------------------------
 
 const createElement = (tag, className) => {
   const element = document.createElement(tag);
@@ -60,6 +79,11 @@ const checkEndGame = () => {
     itemNav.classList.add("disabled");
 
     localStorage.setItem("game-brinquedo", "won");
+      //---------------------------------------------------
+    if (checkAllGamesCompleted()) {
+      window.location.href = "telafinal.html"; // Redireciona para a tela final
+  }
+      //-----------------------------------------------------
   }
 };
 
