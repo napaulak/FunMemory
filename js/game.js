@@ -43,7 +43,8 @@ const playSound = (bicho) => {
   audio.play();
 };
 
-const checkEndGame = () => {
+// Função para verificar o fim do jogo
+function checkEndGame() {
   const disabledCards = document.querySelectorAll(".disabled-card");
 
   if (disabledCards.length == 20) {
@@ -60,8 +61,13 @@ const checkEndGame = () => {
     itemNav.classList.add("disabled");
 
     localStorage.setItem("game-animais", "won");
+
+    // Adicionar evento de clique ao botão de "Jogar Novamente"
+    document.getElementById('play-again').addEventListener('click', function() {
+      restartGame();
+    });
   }
-};
+}
 
 const checkCards = () => {
   const firstBicho = firstCard.getAttribute("data-bicho");
@@ -136,56 +142,76 @@ const loadGame = () => {
   });
 };
 
-const startTimer = () => {
+// Função para reiniciar o jogo
+function restartGame() {
+  // Lógica para reiniciar o jogo
+  document.getElementById("popup").style.display = "none";
+  const cards = document.querySelectorAll(".card");
+  cards.forEach(card => {
+    card.remove();
+  });
+
+  localStorage.removeItem("game-animais");
+
+  // Resetar o timer e outras variáveis de estado do jogo
+  timer.innerHTML = "00";
+  spanPlayer.innerHTML = localStorage.getItem('player');
+  loadGame();
+  // Reiniciar o loop do jogo
+  startGame();
+}
+
+// Função para iniciar o jogo
+function startGame() {
   this.loop = setInterval(() => {
     const currentTime = +timer.innerHTML;
     timer.innerHTML = currentTime + 1;
   }, 1000);
+}
+
+// Iniciar o jogo quando a página carregar
+window.onload = function() {
+  spanPlayer.innerHTML = localStorage.getItem("player");
+
+  const winnedAnimals = [
+    localStorage.getItem("game-animais"),
+    localStorage.getItem("game-brinquedo"),
+    localStorage.getItem("game-comida"),
+    localStorage.getItem("game-fruta"),
+    localStorage.getItem("game-escola"),
+    localStorage.getItem("game-objeto"),
+    localStorage.getItem("game-corpo"),
+    localStorage.getItem("game-profissao"),
+    localStorage.getItem("game-sensacao"),
+    localStorage.getItem("game-transporte"),
+  ];
+
+  // Desabilitar todos os itens que foram ganhos
+  winnedAnimals.forEach((status, index) => {
+    if (status === 'won') {
+      // Aqui, você pode usar um seletor para desabilitar o item correspondente
+      const itemClasses = [
+        'animal',      // index 0
+        'brinquedo',   // index 1
+        'comida',      // index 2
+        'fruta',       // index 3
+        'escola',      // index 4
+        'objeto',      // index 5
+        'corpo',       // index 6
+        'profissao',   // index 7
+        'sensacao',    // index 8
+        'transporte'   // index 9
+      ];
+      const item = document.querySelector(`.${itemClasses[index]}`);
+      if (item) {
+        item.classList.add("disabled");
+      }
+    }
+  });
+
+  startGame();
+  loadGame();
 };
-
-window.onload = () => {
-    spanPlayer.innerHTML = localStorage.getItem("player");
-
-    const winnedAnimals = [
-        localStorage.getItem("game-animais"),
-        localStorage.getItem("game-brinquedo"),
-        localStorage.getItem("game-comida"),
-        localStorage.getItem("game-fruta"),
-        localStorage.getItem("game-escola"),
-        localStorage.getItem("game-objeto"),
-        localStorage.getItem("game-corpo"),
-        localStorage.getItem("game-profissao"),
-        localStorage.getItem("game-sensacao"),
-        localStorage.getItem("game-transporte"),
-    ];
-
-    // Desabilitar todos os itens que foram ganhos
-    winnedAnimals.forEach((status, index) => {
-        if (status === 'won') {
-            // Aqui, você pode usar um seletor para desabilitar o item correspondente
-            const itemClasses = [
-                'animal',      // index 0
-                'brinquedo',   // index 1
-                'comida',      // index 2
-                'fruta',       // index 3
-                'escola',      // index 4
-                'objeto',      // index 5
-                'corpo',       // index 6
-                'profissao',   // index 7
-                'sensacao',    // index 8
-                'transporte'   // index 9
-            ];
-            const item = document.querySelector(`.${itemClasses[index]}`);
-            if (item) {
-                item.classList.add("disabled");
-            }
-        }
-    });
-
-    startTimer();
-    loadGame();
-};
-
 
 document.getElementById("closePopup").onclick = function () {
   document.getElementById("popup").style.display = "none";

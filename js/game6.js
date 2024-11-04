@@ -46,23 +46,31 @@ const playSound = (bicho) => {
     audio.play();
 }
 
-const checkEndGame = () => {
-    const disabledCards = document.querySelectorAll('.disabled-card');
-
+// Função para verificar o fim do jogo
+function checkEndGame() {
+    const disabledCards = document.querySelectorAll(".disabled-card");
+  
     if (disabledCards.length == 20) {
-        clearInterval(this.loop);
-
-        const playerName = spanPlayer.innerHTML;
-        const timeTaken = timer.innerHTML;
-
-        document.getElementById('popupMessage').innerText = `${playerName} Seu tempo foi de: ${timeTaken}. Jogue mais uma vez!`;
-        document.getElementById('popup').style.display = 'flex';
-
-        itemNav.classList.add("disabled");
-
-        localStorage.setItem("game-objeto", "won");
+      clearInterval(this.loop);
+  
+      const playerName = spanPlayer.innerHTML;
+      const timeTaken = timer.innerHTML;
+  
+      document.getElementById(
+        "popupMessage"
+      ).innerText = `${playerName} Seu tempo foi de: ${timeTaken}. Jogue mais uma vez!`;
+      document.getElementById("popup").style.display = "flex";
+  
+      itemNav.classList.add("disabled");
+  
+      localStorage.setItem("game-objeto", "won");
+  
+      // Adicionar evento de clique ao botão de "Jogar Novamente"
+      document.getElementById('play-again').addEventListener('click', function() {
+        restartGame();
+      });
     }
-}
+  }
 
 const checkCards = () => {
    const firstBicho = firstCard.getAttribute('data-bicho')
@@ -140,6 +148,33 @@ const loadGame = () => {
       grid.appendChild(card);
     });
 }
+
+// Função para reiniciar o jogo
+function restartGame() {
+    // Lógica para reiniciar o jogo
+    document.getElementById("popup").style.display = "none";
+    const cards = document.querySelectorAll(".card");
+    cards.forEach(card => {
+      card.remove();
+    });
+  
+    localStorage.removeItem("game-objeto");
+  
+    // Resetar o timer e outras variáveis de estado do jogo
+    timer.innerHTML = "00";
+    spanPlayer.innerHTML = localStorage.getItem('player');
+    loadGame();
+    // Reiniciar o loop do jogo
+    startGame();
+  }
+  
+  // Função para iniciar o jogo
+  function startGame() {
+    this.loop = setInterval(() => {
+      const currentTime = +timer.innerHTML;
+      timer.innerHTML = currentTime + 1;
+    }, 1000);
+  }
 
 const startTimer = () => {
 
