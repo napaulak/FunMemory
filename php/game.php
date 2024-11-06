@@ -21,6 +21,14 @@
     
     <title>Fun Memory</title>
 </head>
+<style>
+    .adj{
+        margin-top: 10px;
+        padding: 10px;
+        cursor: pointer;
+    }
+
+</style>
 <body>
     <?php
         include_once("navbar.html");
@@ -31,6 +39,7 @@
         <span id="closePopup" class="close">&times;</span>
         <h3>Parabéns!</h3><br>
         <p id="popupMessage"></p>
+        <button id="play-again" class="button-53 adj">Jogar Novamente</button>
     </div>
     </div>
     <header>

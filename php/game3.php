@@ -21,26 +21,39 @@
     
     <title>Fun Memory</title>
 </head>
+<style>
+    .adj{
+        margin-top: 10px;
+        padding: 10px;
+        cursor: pointer;
+    }
+
+</style>
 <body>
     <?php
         include_once("navbar.html");
     ?>
-     <main>
+    <main>
     <div id="popup" class="popup">
     <div class="popup-content">
         <span id="closePopup" class="close">&times;</span>
         <h3>Parabéns!</h3><br>
         <p id="popupMessage"></p>
+        <button id="play-again" class="button-53 adj">Jogar Novamente</button>
     </div>
     </div>
-        <header>
+    <header>
             <span class="player"></span>
-            <span>Time: <span class="timer">00</span></span>
+            <span>
+                Player: <span class="user"><?php echo $nome;?></span>
+                Time: <span class="timer">00</span>
+            </span>
         </header>
+
          <div class="grid"></div>
     </main>
+   
 
     <audio id="audioBicho" src="" style="display:none;"></audio>
-
 </body>
 </html>
