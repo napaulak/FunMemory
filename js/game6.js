@@ -46,11 +46,11 @@ const playSound = (bicho) => {
     audio.play();
 }
 
-// Função para verificar o fim do jogo
+// Atualize a função checkEndGame para chamar checkAllGamesWon
 function checkEndGame() {
     const disabledCards = document.querySelectorAll(".disabled-card");
   
-    if (disabledCards.length == 20) {
+    if (disabledCards.length == 2) {
       clearInterval(this.loop);
   
       const playerName = spanPlayer.innerHTML;
@@ -63,7 +63,11 @@ function checkEndGame() {
   
       itemNav.classList.add("disabled");
   
+      // Marcar o jogo atual como 'won'
       localStorage.setItem("game-objeto", "won");
+  
+      // Verificar se todos os jogos foram ganhos
+      checkAllGamesWon();
   
       // Adicionar evento de clique ao botão de "Jogar Novamente"
       document.getElementById('play-again').addEventListener('click', function() {
@@ -71,6 +75,7 @@ function checkEndGame() {
       });
     }
   }
+  
 
 const checkCards = () => {
    const firstBicho = firstCard.getAttribute('data-bicho')
@@ -238,3 +243,27 @@ window.onclick = function(event) {
         document.getElementById('popup').style.display = 'none';
     }
 }
+
+// Função para verificar se todos os jogos foram ganhos
+function checkAllGamesWon() {
+    const winnedAnimals = [
+      localStorage.getItem("game-animais"),
+      localStorage.getItem("game-brinquedo"),
+      localStorage.getItem("game-comida"),
+      localStorage.getItem("game-fruta"),
+      localStorage.getItem("game-escola"),
+      localStorage.getItem("game-objeto"),
+      localStorage.getItem("game-corpo"),
+      localStorage.getItem("game-profissao"),
+      localStorage.getItem("game-sensacao"),
+      localStorage.getItem("game-transporte"),
+    ];
+  
+    // Verifica se todos os jogos estão com status 'won'
+    const allWon = winnedAnimals.every(status => status === 'won');
+    
+    if (allWon) {
+      // Redirecionar para a tela final
+      window.location.href = "telafinal.html"; // Altere para o caminho correto da sua tela final
+    }
+  }
